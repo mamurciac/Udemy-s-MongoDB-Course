@@ -26,7 +26,7 @@ db.stats();
 
 
 
-;
+
 
 
 use cursoMongoUdemy;
@@ -34,6 +34,100 @@ use cursoMongoUdemy;
 //No va a aparecer la bd creada porque no contiene ningun documento, aparecera cuando tenga algun documento
 show dbs;
 
+db.frutas.deleteMany({});
+
+//
+db.frutas.insertOne({nombre: 'Naranja', color: 'Naranja'});
+
+//Ya aparece la bd creada ps se tiene algun documento
+show dbs;
+
+//Se muestran
+db.getCollection('frutas').find();
+
+//
+db.frutas.find();
+
+//Se crea una variable
+manzana1 = {nombre: 'Manzana Granny Smith', color: 'Verde'};
+manzana2 = {nombre: 'Manzana Gala', color: 'Rojo'};
+manzana3 = {nombre: 'Manzana Golden', color: 'Amarillo'};
+db.frutas.insertOne(manzana1);
+db.frutas.insertOne(manzana2);
+db.frutas.insertOne(manzana3);
+
+db.frutas.insertOne({nombre: 'Fresa', color: 'Rojo', temporadaCosecha: true, maduracion: true});
+db.frutas.insertOne({nombre: 'Mora', color: 'Morado', temporadaCosecha: true, maduracion: true});
+
+uva = {nombre: 'Uva', color: 'Morado', temporadaCosecha: false};
+limon = {nombre: 'Limón', color: 'Verde', temporadaCosecha: true};
+mango = {nombre: 'Mango', color: 'Amarillo', temporadaCosecha: false};
+db.frutas.insertMany([uva, limon, mango]);
 
 
-db.frutas.insertOne({});
+
+use cursoMongoUdemy;
+
+show collections;
+
+//HACERLO CON OTRA BD PERO QUE TENGA VARIAS COLECCIONES
+use cursoMongoUdemy;
+
+show collections;
+
+
+
+//Documentos con color rojo
+db.frutas.find({color: 'Rojo'});
+
+
+//Documentos con color rojo
+db.frutas.find({nombre: 'Naranja'});
+
+db.frutas.find({nombre: 'Mango', color: 'Naranja'});
+
+
+db.frutas.find({nombre: 'Mango', color: 'Amarillo'});
+
+
+
+
+db.frutas.find();
+
+db.frutas.deleteOne({maduracion: true});
+
+db.frutas.find();
+
+
+db.frutas.deleteMany({maduracion: true});
+db.frutas.find();
+db.frutas.deleteMany({color: 'Verde'});
+db.frutas.find();
+
+
+
+db.frutas.updateOne({nombre: 'Naranja'}, {$set: {nombre: 'Naranja Tangelo', temporadaCosecha: false, maduracion: true}});
+db.frutas.updateMany({nombre: 'Uva'}, {$set: {nombre: 'Uva Isabella', color: 'Morado'}, $unset: {temporadaCosecha: ''}});
+db.frutas.find();
+
+
+
+
+
+
+
+
+use baseDatosPrueba;
+db.pruebas.insertOne({mensaje: 'Hola'});
+db.pruebas.find();
+show dbs;
+db.dropDatabase();
+show dbs;
+
+
+
+
+use cursoMongoUdemy;
+db.frutas.find();
+db.frutas.find().pretty();
+
