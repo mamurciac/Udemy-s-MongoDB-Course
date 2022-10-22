@@ -134,7 +134,7 @@ db.frutas.find().pretty();
 
 
 
-db.videos.insertOne({titulo: 'Curso de Angular 4 Avanzado', descripcion: 'Curso de victorroblesweb.es', archivo: 'curso_angular4avanzado.mp4', etiquetas: [{nombre: 'curso'}, {nombre: 'angular4'}, {nombre: 'victor robles'}]});
+db.videos.insertOne({titulo: 'Curso de Angular 4 Avanzado', descripcion: 'Curso de victorroblesweb.es', archivo: 'curso_angular4avanzado.mp4', etiquetas: [{nombre: 'curso'}, {nombre: 'angular4'}, {nombre: 'victor robles'}], localizacion: {pais: 'España', provincia: 'Madrid', ciudad: 'Getafe'}});
 db.videos.insertOne({titulo: 'Curso de Symfony 3', descripcion: 'Curso de victorroblesweb.es', archivo: 'curso_symfony3.mp4', etiquetas: [{nombre: 'symfony'}], comentarios: [{userId: 12, texto: 'uno'}, {userId: 15, texto: 'muy buen video'}]});
 db.videos.find();
 
@@ -162,14 +162,14 @@ db.videos.find();
 
 
 
-db.frutas.find({}, {nombre: 1, color: 0, _id: 0});
-db.frutas.find({}, {nombre: 1, color: 0, _id: 0}).sort({nombre: 1});
-db.frutas.find({}, {nombre: 1, color: 0, _id: 0}).sort({nombre: -1});
+db.frutas.find({}, {nombre: 1, color: 1, _id: 0});
+db.frutas.find({}, {nombre: 1, color: 1, _id: 0}).sort({nombre: 1});
+db.frutas.find({}, {nombre: 1, color: 1, _id: 0}).sort({nombre: -1});
 
 db.frutas.insertOne({nombre: 'Pera', color: 'Verde'});
 
-db.frutas.find({}, {nombre: 1, color: 0, _id: 0}).sort({_id: 1});
-db.frutas.find({}, {nombre: 1, color: 0, _id: 0}).sort({_id: -1});
+db.frutas.find({}, {nombre: 1, color: 1, _id: 0}).sort({_id: 1});
+db.frutas.find({}, {nombre: 1, color: 1, _id: 0}).sort({_id: -1});
 
 
 
@@ -184,7 +184,7 @@ db.videos.find({year: {$gte: 2020}});
 db.videos.find({year: {$gt: 2016}});
 db.videos.find({year: {$lt: 2019}});
 db.videos.find({year: {$eq: 2017}});
-db.videos.find({year: {$neq: 2017}});
+db.videos.find({year: {$ne: 2017}});
 
 
 db.videos.find({year: {$gte: 2015, $lte: 2017}}, {titulo: 1, _id: 0});
@@ -196,3 +196,7 @@ db.videos.find({year: {$gte: 2015, $lte: 2017}}, {titulo: 1, _id: 0});
 db.frutas.find({color: 'Amarillo'}).count();
 db.frutas.find().count();
 db.frutas.find({}).count();
+
+
+
+
