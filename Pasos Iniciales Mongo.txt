@@ -1,0 +1,39 @@
+show dbs;
+
+use curso_node_angular2;
+
+db.bookmarks.insertOne({id: 1, title: 'Curso de Angular 2 en Español - Crea webapps desde cero', url: 'http://victorroblesweb.es/cursos', description: 'El mejor curso de Angular 2 en Español'});
+
+show dbs;
+
+db.bookmarks.find();
+
+
+help
+
+//Metodos para la bd que se tienen disponibles
+db.help();
+
+//Version de MongoDB
+db.version();
+
+db.stats();
+
+
+
+
+
+
+
+
+;
+
+
+use cursoMongoUdemy;
+
+//No va a aparecer la bd creada porque no contiene ningun documento, aparecera cuando tenga algun documento
+show dbs;
+
+
+
+db.frutas.insertOne({});
