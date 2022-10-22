@@ -199,4 +199,67 @@ db.frutas.find({}).count();
 
 
 
+db.videos.find({"localizacion.pais": 'España'});
+db.videos.find();
+db.videos.updateOne({"localizacion.pais": 'España'}, {$set: {"localizacion.continente": 'Europa', "localizacion.numeroHabitantes": 5000000}});
+db.videos.find();
+db.videos.updateOne({"localizacion.pais": 'España'}, {$set: {"localizacion.ciudad": 'Alconcor'}});
+db.videos.find();
 
+db.videos.updateOne({"localizacion.pais": 'España'}, {$unset: {"localizacion.continente": ''}});
+db.videos.find();
+
+db.videos.updateMany({archivo: 'curso_symfony3.mp4'}, {$set: {categoria: 'Programación'}});
+db.videos.find();
+
+db.videos.updateOne({"localizacion.pais": 'España'}, {$unset: {categoria: ''}});
+db.videos.find();
+
+db.videos.find({}, {localizacion: 1, "etiquetas.nombre": 1});
+db.videos.find({}, {localizacion: 1, "comentarios.texto": 1});
+
+
+
+
+db.videos.updateOne({"localizacion.pais": 'España'}, {$push: {texto: 'MongoDB'}});
+db.videos.find();
+db.videos.updateOne({"localizacion.pais": 'España'}, {$push: {etiquetas: [{texto: 'MongoDB'}]}});
+db.videos.find();
+db.videos.updateOne({"localizacion.pais": 'España'}, {$push: {etiquetas: {texto: 'MongoDB'}}});
+db.videos.find();
+
+db.videos.updateOne({"localizacion.pais": 'España'}, {$pull: {etiquetas: {texto: 'MongoDB'}}});
+db.videos.find();
+db.videos.updateOne({"localizacion.pais": 'España'}, {$pull: {etiquetas: [{texto: 'MongoDB'}]}});
+db.videos.find();
+
+//No debe eliminar nada
+db.videos.updateMany({"localizacion.pais": 'España'}, {$pull: {etiquetas: {texto: {$in: ["Robles"]}}}});
+db.videos.find();
+//Deberia eliminar algo
+db.videos.updateMany({"localizacion.pais": 'España'}, {$pull: {etiquetas: {texto: {$in: ["Víctor Robles"]}}}});
+db.videos.find();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+db.frutas.find({color: 'Rojo'});
+//SELECT * FROM frutas WHERE color LIKE '%o%'
+db.frutas.find({color: /o/});
+db.frutas.find({color: /ojo/});
+db.frutas.find({nombre: /ana/});
+db.frutas.find({nombre: /a$/});
+db.frutas.find({nombre: /^M/});
