@@ -131,3 +131,17 @@ use cursoMongoUdemy;
 db.frutas.find();
 db.frutas.find().pretty();
 
+
+
+
+db.videos.insertOne({titulo: 'Curso de Angular 4 Avanzado', descripcion: 'Curso de victorroblesweb.es', archivo: 'curso_angular4avanzado.mp4', etiquetas: [{nombre: 'curso'}, {nombre: 'angular4'}, {nombre: 'victor robles'}]});
+db.videos.insertOne({titulo: 'Curso de Symfony 3', descripcion: 'Curso de victorroblesweb.es', archivo: 'curso_symfony3.mp4', etiquetas: [{nombre: 'symfony'}], comentarios: [{userId: 12, texto: 'uno'}, {userId: 15, texto: 'muy buen video'}]});
+
+
+db.videos.updateOne({titulo: 'Curso de Symfony 3'}, {$push: {etiquetas: {nombre: 'curso'}}});
+db.videos.updateOne({titulo: 'Curso de Symfony 3'}, {$push: {comentarios: {user: 16, texto: 'Excelente curso'}}});
+db.videos.updateOne({titulo: 'Curso de Symfony 3'}, {$set: {descripcion: 'victorroblesweb.es', etiquetas: {texto: 'El mejor curso de programación web'}}});
+db.videos.updateOne({titulo: 'Curso de Symfony 3'}, {$set: {descripcion: 'Enlace de ayuda: victorroblesweb.es', etiquetas: [{texto: 'Desarrollo web'}]}});
+db.videos.updateOne({titulo: 'Curso de Symfony 3'}, {$push: {etiquetas: {texto: 'Víctor Robles'}}});
+
+
