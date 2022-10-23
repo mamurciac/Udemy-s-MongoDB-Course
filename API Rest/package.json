@@ -4,7 +4,8 @@
   "description": "Implementación de una API REST del curso de MongoDB de Udemy de Víctor Robles",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "Michael Andrés Murcia Contreras",
   "license": "MIT",
