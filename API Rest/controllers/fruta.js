@@ -28,7 +28,7 @@ function saveFruta(req, res){
     fruta.save((error, frutaStored) => {
       if(error){
         res.status(500).send({
-          message: error,
+          message: error
         });
       }else{
         if(frutaStored){
@@ -49,7 +49,28 @@ function saveFruta(req, res){
   }
 };
 
+function getFrutas(req, res){
+  Fruta.find({}).sort({'_id': 1}).exec((error, frutas) => {
+    if(error){
+      res.status(500).send({
+        message: error
+      });
+    }else{
+      if(frutas){
+        res.status(200).send({
+          frutas
+        });
+      }else{
+        res.status(404).send({
+          message: 'No hay frutas'
+        });
+      }
+    }
+  });
+};
+
 module.exports = {
   pruebas,
-  saveFruta
+  saveFruta,
+  getFrutas
 };
